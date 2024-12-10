@@ -27,8 +27,8 @@
                         <td>{{ tarefa.data_entrega }}</td>
                         <td>{{ tarefa.data_finalizacao }}</td>
                         <td>
-                          <a href="#" class="btn btn-primary btn-sm">Concluir</a>
-                          <a href="{% url "tarefa_uptade" pk=tarefa.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                          <a href="{% url "tarefa_complete" pk=tarefa.pk %}" class="btn btn-primary btn-sm {% if tarefa.data_finalizacao %}disabled{% endif %}">Concluir</a>
+                          <a href="{% url "tarefa_uptade" pk=tarefa.pk %}" class="btn btn-warning btn-sm {% if tarefa.data_finalizacao %}disabled{% endif %}" >Editar</a>
                           <a href="{% url "tarefa_delete" pk=tarefa.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                         </td>
                     </tr>
