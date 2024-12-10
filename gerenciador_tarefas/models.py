@@ -18,8 +18,5 @@ class Tarefa(models.Model):
             self.data_finalizacao = date.today()
             self.save()    
 
-# class Usuario(models.Model) :
-#     nome = models.CharField(max_length=100, null=False, blank=False)
-#     email = models.EmailField(null=False, blank=False)
-#     senha = models.CharField(null=False, blank=False)
+
 

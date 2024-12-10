@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "gerenciador_tarefas.apps.GerenciadorTarefasConfig",  # instala app, para fazer parte do projeto
     "crispy_forms",
     "crispy_bootstrap5",
+    "gerenciador_usuario.apps.GerenciadorUsuarioConfig"
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
