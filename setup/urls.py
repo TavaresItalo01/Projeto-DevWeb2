@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from gerenciador_usuario.views import login_view
+from gerenciador_usuario.views import login_view, enviar_email
 
 from gerenciador_tarefas.views import (
     TarefasListView, 
@@ -20,5 +20,6 @@ urlpatterns = [
     path("update/<int:pk>", TarefaUpdateView.as_view(), name="tarefa_uptade"),
     path("delete/<int:pk>", TarefaDeleteView.as_view(), name="tarefa_delete"),
     path("complete/<int:pk>",TarefaCompleteView.as_view(), name="tarefa_complete"),
-    path("createuser", UsuarioCreateView.as_view(), name="usuario_form" )
+    path("createuser", UsuarioCreateView.as_view(), name="usuario_form" ),
+    path('', enviar_email, name='enviar_email'),
 ]
