@@ -145,4 +145,4 @@ EMAIL_HOST_PASSWORD = 'unrz udcn zjjw jknn'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://us-east-1.console.aws.amazon.com']
