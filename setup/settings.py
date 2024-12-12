@@ -29,11 +29,7 @@ SECRET_KEY = "django-insecure-(nip0s*3270=99!r@%vi_d#2tm7+((9mfv6n)e+iqqcpz(o+1e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '.vfs.cloud9.us-east-1.amazonaws.com',  # Permite todos os subdomínios do Cloud9
-    'localhost',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -61,8 +57,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-SESSION_COOKIE_AGE = 3600  # 1 hora
+# SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+# SESSION_COOKIE_AGE = 3600  # 1 hora
 
 
 ROOT_URLCONF = "setup.urls"
@@ -70,7 +66,7 @@ ROOT_URLCONF = "setup.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates'),],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -90,9 +86,13 @@ WSGI_APPLICATION = "setup.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": db_url(
-        os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
-    )
+    # "default": db_url(
+    #     os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
+    # )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -149,6 +149,6 @@ EMAIL_HOST_PASSWORD = 'unrz udcn zjjw jknn'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://*.vfs.cloud9.us-east-1.amazonaws.com',  # Permite todos os subdomínios no Cloud9 com HTTPS
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://*.vfs.cloud9.us-east-1.amazonaws.com',  # Permite todos os subdomínios no Cloud9 com HTTPS
+# ]
