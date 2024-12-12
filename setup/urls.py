@@ -21,5 +21,5 @@ urlpatterns = [
     path("delete/<int:pk>", TarefaDeleteView.as_view(), name="tarefa_delete"),
     path("complete/<int:pk>",TarefaCompleteView.as_view(), name="tarefa_complete"),
     path("createuser", UsuarioCreateView.as_view(), name="usuario_form" ),
-    path('', enviar_email, name='enviar_email'),
+    path('email', enviar_email, name='enviar_email'),
 ]
