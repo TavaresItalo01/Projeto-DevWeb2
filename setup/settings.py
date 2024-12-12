@@ -144,3 +144,5 @@ EMAIL_HOST_USER = 'pedroaliex44444@gmail.com' # conta gmail remetente
 EMAIL_HOST_PASSWORD = 'unrz udcn zjjw jknn'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+CSRF_TRUSTED_ORIGINS = ['*']
