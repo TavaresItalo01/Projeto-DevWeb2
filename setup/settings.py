@@ -29,7 +29,12 @@ SECRET_KEY = "django-insecure-(nip0s*3270=99!r@%vi_d#2tm7+((9mfv6n)e+iqqcpz(o+1e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "*",
+    "b4cde1a7194c4f60bfef407459bb9a53.vfs.cloud9.us-east-1.amazonaws.com",    
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -146,3 +151,4 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
 CSRF_TRUSTED_ORIGINS = ['https://us-east-1.console.aws.amazon.com']
+CSRF_COOKIE_SECURE = False
