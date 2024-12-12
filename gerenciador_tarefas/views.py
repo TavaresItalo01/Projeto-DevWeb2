@@ -3,8 +3,9 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView, V
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
 
-class TarefasListView(ListView) :
+class TarefasListView(ListView):
     model = Tarefa
+
 
 class TarefaCreateView(CreateView) :
     model = Tarefa

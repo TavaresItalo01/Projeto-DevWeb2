@@ -14,7 +14,7 @@ from gerenciador_usuario.views import UsuarioCreateView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("login", login_view),
+    path("login", login_view, name="login"),
     path("home", TarefasListView.as_view(), name="tarefa_lista"),
     path("create", TarefaCreateView.as_view(), name="tarefa_form"),
     path("update/<int:pk>", TarefaUpdateView.as_view(), name="tarefa_uptade"),
