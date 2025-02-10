@@ -1,10 +1,10 @@
 from datetime import date
 from django.db import models
-from gerenciador_usuario.models import Usuario
+from django.contrib.auth.models import User
 
 
 class Tarefa(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, default=1)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     titulo = models.CharField(verbose_name="Titúlo da tarefa",max_length=100, null=False, blank=False)
     data_criacao = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     data_entrega = models.DateField(verbose_name="Data da entrega",null=False, blank=False)
