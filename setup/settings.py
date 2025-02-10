@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "gerenciador_tarefas.apps.GerenciadorTarefasConfig",  # instala app, para fazer parte do projeto
     "crispy_forms",
     "crispy_bootstrap5",
-    "gerenciador_usuario.apps.GerenciadorUsuarioConfig"
 ]
 
 MIDDLEWARE = [
