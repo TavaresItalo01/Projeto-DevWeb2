@@ -50,7 +50,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    #"django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -147,6 +147,10 @@ EMAIL_HOST_USER = 'pedroaliex44444@gmail.com' # conta gmail remetente
 EMAIL_HOST_PASSWORD = 'unrz udcn zjjw jknn'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+LOGIN_REDIRECT_URL = 'home'  # Redireciona para a página 'home' após login
+LOGOUT_REDIRECT_URL = '/login/'  # Redireciona para a página de login após logout
+
 
 # CSRF_TRUSTED_ORIGINS = [
 #     'https://*.vfs.cloud9.us-east-1.amazonaws.com',  # Permite todos os subdomínios no Cloud9 com HTTPS

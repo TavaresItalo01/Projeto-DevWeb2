@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block page_titulo %}
+  Logout
+{% endblock page_titulo %}
+
+{% block conteudo %}
+  <div class="container">
+    <h1>Você foi desconectado!</h1>
+    <p>Obrigado por usar o nosso sistema. Você foi desconectado com sucesso.</p>
+
+    <!-- Formulário POST para logout -->
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary">Fazer logout</button>
+    </form>
+
+    <a href="{% url 'core:login' %}" class="btn btn-secondary">Fazer login novamente</a>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar para a página inicial</a>
+  </div>
+{% endblock conteudo %}
