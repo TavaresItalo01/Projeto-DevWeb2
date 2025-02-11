@@ -10,7 +10,7 @@ def registrar(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             login(request, user)  # Faz login automaticamente após o registro
-            return redirect('home')  # Redireciona para a página de tarefas
+            return redirect('home.html')  # Redireciona para a página de tarefas
     else:
         form = UserRegistrationForm()
 
