@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block page_titulo %}
   Editar Perfil
 {% endblock page_titulo %}
@@ -9,7 +9,7 @@
     <h2>Editar Perfil</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button type="submit" class="btn btn-success">Salvar Alterações</button>
         <a href="{% url 'home' %}" class="btn btn-secondary">Cancelar</a>
     </form>
