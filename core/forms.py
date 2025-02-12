@@ -8,11 +8,12 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("username", 'first_name')
+        fields = ("username", 'first_name', "email")
 
         labels = {
             "username": "Usuário",
             "first_name": "Nome",
+            "email": "E-mail"
         }
 
     def clean_password2(self):
@@ -20,3 +21,9 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError("As senhas não coincidem!")
         return cd['password2']
+    
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("Este e-mail já está em uso. Escolha outro.")
+        return email

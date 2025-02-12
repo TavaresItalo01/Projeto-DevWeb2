@@ -1,7 +1,6 @@
 from .models import Tarefa
 from .forms import TarefaForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, View
-from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
@@ -66,7 +65,7 @@ class TarefaCompleteView(View):
             subject='Tarefa Completa!',
             message=f'A tarefa "{tarefa.titulo}" foi marcada como completa.',
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[request.user.username],
+            recipient_list=[request.user.email],
             fail_silently=False,
         )
 
