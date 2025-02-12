@@ -6,6 +6,11 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.http import HttpResponseForbidden
+from .models import Tarefa
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 class TarefasListView(LoginRequiredMixin, ListView):
@@ -49,5 +54,24 @@ class TarefaDeleteView(DeleteView):
 class TarefaCompleteView(View):
     def get(self, request, pk):
         tarefa = get_object_or_404(Tarefa, pk=pk)
+         # Verifica se o usuário é o dono da tarefa
+        if tarefa.usuario != request.user:
+            return HttpResponseForbidden("Você não tem permissão para completar esta tarefa.")
+        
+        # Marca a tarefa como completa
         tarefa.marque_como_completo()
-        return redirect("home")   
+
+        # Envia o e-mail de notificação
+        send_mail(
+            subject='Tarefa Completa!',
+            message=f'A tarefa "{tarefa.titulo}" foi marcada como completa.',
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[request.user.username],
+            fail_silently=False,
+        )
+
+        # Feedback para o usuário
+        messages.success(request, "Tarefa marcada como completa e e-mail enviado!")
+
+        # Redireciona para a home
+        return redirect('home')
