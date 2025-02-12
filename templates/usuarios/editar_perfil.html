@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block page_titulo %}
+  Editar Perfil
+{% endblock page_titulo %}
+
+{% block conteudo %}
+<div class="container mt-4">
+    <h2>Editar Perfil</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Salvar Alterações</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+
+    <!-- Link para editar a senha -->
+    <div class="mt-4">
+        <a href="{% url 'core:password_change' %}" class="btn btn-warning">Alterar Senha</a>
+    </div>
+</div>
+{% endblock conteudo %}

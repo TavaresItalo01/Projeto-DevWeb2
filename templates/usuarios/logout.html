@@ -10,7 +10,7 @@
     <p>Obrigado por usar o nosso sistema. Você foi desconectado com sucesso.</p>
 
     <!-- Formulário POST para logout -->
-    <form method="post" action="{% url 'logout' %}">
+    <form method="post" action="{% url 'core:logout' %}">
       {% csrf_token %}
       <button type="submit" class="btn btn-primary">Fazer logout</button>
     </form>
