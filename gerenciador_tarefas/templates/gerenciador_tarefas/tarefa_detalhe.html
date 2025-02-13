@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block page_titulo %}
+  Detalhes da Tarefa
+{% endblock page_titulo %}
+
+{% block conteudo %}
+  <div class="container mt-4">
+
+    <h2>{{ tarefa.titulo }}</h2>
+    <p><strong>Descrição:</strong> {{ tarefa.descricao }}</p>
+    <p><strong>Data de Criação:</strong> {{ tarefa.data_criacao }}</p>
+    <p><strong>Data de Entrega:</strong> {{ tarefa.data_entrega }}</p>
+
+    <h3>Comentários</h3>
+    {% if tarefa.comentarios.all %}
+      <ul class="list-group">
+        {% for comentario in tarefa.comentarios.all %}
+          <li class="list-group-item">
+            <strong>{{ comentario.usuario.username }}:</strong> 
+            <p>{{ comentario.conteudo }}</p> <!-- Exibindo o texto do comentário -->
+            <small class="text-muted">Comentado em {{ comentario.data_criacao }}</small>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Não há comentários para esta tarefa.</p>
+    {% endif %}
+
+    <a href="{% url 'adicionar_comentario' pk=tarefa.pk %}" class="btn btn-primary mt-3">Adicionar Comentário</a>
+    <!-- Botão de Voltar -->
+    <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Voltar para a Página Inicial</a>
+  </div>
+{% endblock conteudo %}
