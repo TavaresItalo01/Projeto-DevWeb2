@@ -1,3 +1,4 @@
+from email import message
 from .models import Tarefa
 from .forms import ComentarioForm, TarefaForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, View
@@ -62,8 +63,15 @@ class TarefaCompleteView(View):
 
         # Envia o e-mail de notificação
         send_mail(
-            subject='Tarefa Completa!',
-            message=f'A tarefa "{tarefa.titulo}" foi marcada como completa.',
+            subject='GEN-Tarefas: Sua tarefa foi completada!',
+            message=(
+                f'A tarefa "{tarefa.titulo}" foi marcada como completa.\n'
+                f'Detalhes da tarefa:\n\n'
+                f'Descrição: "{tarefa.descricao}"\n\n'
+                f'Data da conclusão: "{tarefa.data_finalizacao}"\n\n\n'
+                f'Obrigado por usar nosso sistema!\n\n'
+                f'GEN-Tarefas'
+                ),
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[request.user.email],
             fail_silently=False,

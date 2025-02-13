@@ -22,5 +22,7 @@
     {{ form|crispy }}
         
     <button type="submit" class="btn btn-primary">Salvar</button>
+    <br><br>
+    <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Voltar</a>
   </form>    
 {% endblock conteudo %}
